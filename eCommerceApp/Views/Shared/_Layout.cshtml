@@ -1,0 +1,193 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>CLA</title>
+      <meta name="description" content="MVC Final Project">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+      <!-- Font-Awesome css -->
+      <link rel="stylesheet" href="~/lib/font-awesome/css/all.css"/>
+      <!-- style css -->
+      <link rel="stylesheet" href="~/css/site.css" />
+      
+      <!-- favicon -->
+      <link rel="icon" href="~/images/favicon.png" type="image/gif" />
+
+   </head>
+   <!-- body -->
+   <body class="main-layout inner_posituong computer_page">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="~/images/loading.gif" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                              <a asp-controller="Home" asp-action=""><img src="~/images/logo.png" alt="#" /></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                           <ul class="navbar-nav mr-auto">
+                              <li class="nav-item active">
+                                 <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                              </li>
+
+                              <div class="dropdown show">
+                              <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                                Categories
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="nav-link text-dark" asp-controller="all-categories" asp-action="">All</a>
+                                <a class="nav-link text-dark" asp-controller="mobile" asp-action="">Mobiles</a>
+                                <a class="nav-link text-dark" asp-controller="computer" asp-action="">Computers</a>
+                                <a class="nav-link text-dark" asp-controller="laptop" asp-action="">Laptops</a>
+                                
+                              </div>
+                            </div>
+                             <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Products</a>
+                            </li>
+                             <li class="nav-item">
+                                   <a class="nav-link" asp-area="" asp-controller="orders" asp-action="Shoppingcart">Cart</a>
+                            </li>
+                              @if (User.Identity.IsAuthenticated == false)
+                        {
+                            <li class="nav-item">
+                                
+                                <a class="btn btn-info " style="margin-right:5px" asp-area="" asp-controller="Account" asp-action="Login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                                
+                            </li>
+                            <li class="nav-item">
+                               
+                                <a class="btn btn-info" asp-area="" asp-controller="Account" asp-action="Register"> <i class="fa fa-user-plus" aria-hidden="true"></i>Register</a>
+                            </li>
+                     }else{
+                             
+                            <li class="nav-item">
+                                <span class="nav-link text-white" asp-area="">Welcome, @User.Identity.Name</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-info" style="margin-right:5px" asp-area="" asp-controller="Account" asp-action="Signout"><i class="fa fa-sign-out" aria-hidden="true"></i>Sign Out</a>
+                            </li> 
+                         } 
+                         @if(User.IsInRole("Admin"))
+                        {
+                            
+                            <div class="dropdown show">
+                              <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-cogs" aria-hidden="true"></i> 
+                                Admin Panel
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="nav-link text-dark" asp-controller="Product" asp-action="addproduct">Add Product</a>
+                                <a class="nav-link text-dark" asp-controller="Category" asp-action="addcategory">Add Category</a>
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="adminregister">Add Admin</a>
+                                <a class="nav-link text-dark" asp-controller="Role" asp-action="addrole">Add Role</a>
+                                <a class="nav-link text-dark" asp-controller="Category" asp-action="index">All Categories</a>
+                                <a class="nav-link text-dark" asp-controller="user" asp-action="index">All Users</a>
+                              </div>
+                            </div>
+                        }
+                           </ul>
+                        </div>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+
+      <!-- end header inner -->
+      <!-- end header -->
+       @RenderBody()
+            @await RenderSectionAsync("Scripts", required: false)
+
+            <!--  footer -->
+      <footer>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                     <img class="logo1" src="~/images/logo1.png" alt="#"/>
+                     <ul class="social_icon">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                     </ul>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                     <h3>About Us</h3>
+                     <ul class="about_us">
+                        <li>dolor sit amet, consectetur<br> magna aliqua. Ut enim ad <br>minim veniam, <br> quisdotempor incididunt r</li>
+                     </ul>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                     <h3>Contact Us</h3>
+                     <ul class="conta">
+                        <li>dolor sit amet,<br> consectetur <br>magna aliqua.<br> quisdotempor <br>incididunt ut e </li>
+                     </ul>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                     <form class="bottom_form">
+                        <h3>Newsletter</h3>
+                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
+                        <button class="sub_btn">subscribe</button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p>© 2022 All Rights Reserved. Design With ♥ By ITI Ismailia</a></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="~/js/jquery.min.js"></script>
+      <script src="~/js/popper.min.js"></script>
+      <script src="~/js/bootstrap.bundle.min.js"></script>
+      <script src="~/js/jquery-3.0.0.min.js"></script>
+      <!-- sidebar -->
+      <script src="~/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="~/js/custom.js"></script>
+      </body>
+    </html>
+
+
+
+
+
+
+
+
