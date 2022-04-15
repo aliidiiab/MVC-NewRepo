@@ -116,13 +116,13 @@ namespace eCommerceApp.Controllers
 
         #region Login
         [HttpGet]
-        public IActionResult Login(string ReturnUrl = "~/home/index")
+        public IActionResult Login(string ReturnUrl = "~/home")
         {
             ViewData["RedirectUrl"] = ReturnUrl;
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginUserViewModel loginUser, string ReturnUrl = "~/home/index")
+        public async Task<IActionResult> Login(LoginUserViewModel loginUser, string ReturnUrl = "~/home")
         {
             if (ModelState.IsValid == false)
             {
