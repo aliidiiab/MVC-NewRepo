@@ -77,7 +77,7 @@ namespace eCommerceApp
                 endpoints.MapControllerRoute(
                     name: "all-categories",
                     pattern: "all-categories",
-                    defaults: new { controller = "Category", action = "Index" });
+                    defaults: new { controller = "product", action = "Index" });
                 //register in Route
                 endpoints.MapControllerRoute(
                    name: "signin",

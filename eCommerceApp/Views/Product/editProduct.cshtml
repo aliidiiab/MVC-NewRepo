@@ -3,12 +3,13 @@
 @{
     ViewData["Title"] = "editProduct";
 }
-
+<div class="container">
 <h1>Edit Product</h1>
-
 <hr />
+</div>
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 container">
         <form  method="post" asp-action="save_editproduct"asp-controller="product"asp-route-id="@Model.ProductID">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
@@ -18,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ProductDescreption" class="control-label"></label>
-                <input asp-for="ProductDescreption" class="form-control" />
+                <textarea asp-for="ProductDescreption" class="form-control" ></textarea>
                 <span asp-validation-for="ProductDescreption" class="text-danger"></span>
             </div>
             <div class="form-group">

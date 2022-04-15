@@ -1,0 +1,16 @@
+﻿@model Product
+<div class="card mx-3 my-3 p-2 container" style="width: 18rem;">
+
+            <img class="card-img-top" src="~/Images/@Model.ProductImage" alt="Card image cap">
+            <div class="card-body">
+                <h6 class="card-title">Name: @Model.ProductName</h6>
+                <h6 class="card-text">Price: @Model.ProductPrice $</h6>
+                <p class="card-text">@Model.ProductDescreption </p>
+                <a class="btn btn-success"asp-controller = "Orders" asp-action = "AddToShoppingCart" asp-route-id ="@Model.ProductID">Add To Cart</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="btn btn-warning" asp-controller="product" asp-action="editproduct" asp-route-id="@Model.ProductID">Edit</a>
+                    <a class="btn btn-danger" asp-controller="product" asp-action="deleteproduct" asp-route-id="@Model.ProductID">Delete</a>
+                }
+</div>
+</div>
