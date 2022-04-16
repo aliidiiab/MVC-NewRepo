@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace eCommerceApp.Models
 {
@@ -28,6 +29,9 @@ namespace eCommerceApp.Models
 
     public class ApplicationUser : IdentityUser
     {
-        
+        [Required]
+        public string Phone { get; set; }
+        [Required]
+        public string Address { get; set; }
     }
 }

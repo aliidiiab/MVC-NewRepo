@@ -42,6 +42,8 @@ namespace eCommerceApp.Controllers
                 ApplicationUser userModel = new ApplicationUser();
                 userModel.Email = registerUser.Email;
                 userModel.UserName = registerUser.UserName;
+                userModel.Address = registerUser.Address;
+                userModel.Phone = registerUser.Phone;
                 userModel.PasswordHash = registerUser.Password;
                 IdentityResult result = await userManager.CreateAsync(userModel, registerUser.Password);
                 if (result.Succeeded == true)

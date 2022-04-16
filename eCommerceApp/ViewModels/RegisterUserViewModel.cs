@@ -4,10 +4,14 @@ namespace eCommerceApp.ViewModels
 {
     public class RegisterUserViewModel
     {
-        [Required]
+       
         public string Name { get; set; }
         [Required]
         public string UserName { get; set; }
+        [Required]
+        public string Phone { get; set; }
+        [Required]
+        public string Address { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
