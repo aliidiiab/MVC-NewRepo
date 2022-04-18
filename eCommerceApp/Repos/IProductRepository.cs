@@ -11,5 +11,6 @@ namespace eCommerceApp.Repos
         Product getbyName(string name);
         int Insert(Product _product);
         int Update(int id, Product _product);
+        int DeleteAll();
     }
 }

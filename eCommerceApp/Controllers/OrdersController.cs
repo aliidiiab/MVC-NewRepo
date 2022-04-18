@@ -66,7 +66,20 @@ namespace eCommerceApp.Controllers
         }
         #endregion
 
-        
+        #region delete all from shopping cart crteated in signout function in Account controller
+        //public IActionResult DeleteAllFromShoppingCart()
+        //{
+        //    var items=ProductRepository.getallproducts();
+        //    if (items != null)
+        //    {
+        //        ShoppingCart.RemoveAllItemsFromCart(items);
+        //    }
+        //    return RedirectToAction(nameof(Shoppingcart));
+        //}
+        #endregion
+
+
+
 
 
 

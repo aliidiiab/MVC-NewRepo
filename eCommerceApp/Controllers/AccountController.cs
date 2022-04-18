@@ -5,21 +5,29 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System;
+using eCommerceApp.Controllers;
+using eCommerceApp.Repos;
 
 namespace eCommerceApp.Controllers
 {
     public class AccountController : Controller
     {
+
+        private readonly IProductRepository ProductRepository;
+        private readonly IShoppingCart ShoppingCart;
         #region Manageres
         private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         #endregion
 
         #region CTOR
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IProductRepository _ProductRepository, IShoppingCart _ShoppingCart)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            ProductRepository = _ProductRepository;
+            ShoppingCart = _ShoppingCart;
+            
         }
         #endregion
 
@@ -70,13 +78,13 @@ namespace eCommerceApp.Controllers
 
         #region Admin Register
         //----------------------------For Admin -------------------\\
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult AdminRegister()
         {
             return View();
         }
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> AdminRegister(RegisterUserViewModel registerUser)
         {
             if (ModelState.IsValid == false)
@@ -89,6 +97,8 @@ namespace eCommerceApp.Controllers
                 ApplicationUser userModel = new ApplicationUser();
                 userModel.Email = registerUser.Email;
                 userModel.UserName = registerUser.UserName;
+                userModel.Address = registerUser.Address;
+                userModel.Phone = registerUser.Phone;
                 userModel.PasswordHash = registerUser.Password;
 
                 IdentityResult result = await userManager.CreateAsync(userModel, registerUser.Password);
@@ -149,7 +159,13 @@ namespace eCommerceApp.Controllers
         #region SignOut
         public async Task<IActionResult> Signout()
         {
+            
             await signInManager.SignOutAsync();
+            var items = ProductRepository.getallproducts();
+            if (items != null)
+            {
+                ShoppingCart.RemoveAllItemsFromCart(items);
+            }
             return RedirectToAction("Login");
         }
         #endregion

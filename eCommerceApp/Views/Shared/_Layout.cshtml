@@ -76,7 +76,7 @@
                                  
                                    <a class="nav-link" asp-area="" asp-controller="orders" asp-action="Shoppingcart">Cart <i class="fa fa-shopping-cart" aria-hidden="true" style="color:white"></i></a>
                                    
-
+                                    
                             </li>
                               @if (User.Identity.IsAuthenticated == false)
                         {
@@ -94,8 +94,10 @@
                             <li class="nav-item">
                                 <span class="nav-link text-white" asp-area="">Welcome, @User.Identity.Name</span>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" style="margin-right:5px" asp-area="" asp-controller="Account" asp-action="Signout">Sign Out <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                            <li class="nav-item" href="/Orders/DeleteAllFromShoppingCart">
+                                
+                                <a id="signout"class="nav-link text-white" style="margin-right:5px"
+                                asp-controller="Account" asp-action="Signout">Sign Out <i class="fa fa-sign-out" aria-hidden="true"></i></a>
                             </li> 
                          } 
                          @if(User.IsInRole("Admin"))
@@ -188,10 +190,6 @@
       <script src="~/js/custom.js"></script>
       </body>
     </html>
-
-
-
-
 
 
 
