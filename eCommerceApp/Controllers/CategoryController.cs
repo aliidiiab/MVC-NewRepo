@@ -15,7 +15,8 @@ namespace eCommerceApp.Controllers
             context = _context;
         }
         [HttpGet]
-        public IActionResult Index()
+        
+        public IActionResult AdminCategories()
         {
             List<Category> categories = context.getallCategories();
 

@@ -78,6 +78,11 @@ namespace eCommerceApp.Controllers
             return View("Index");
             
         }
+        public IActionResult ShowDetails(int id)
+        {
+            Product product = context.getbyID(id);
+            return View(product);
+        }
 
 
     }

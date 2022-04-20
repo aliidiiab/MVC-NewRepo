@@ -4,11 +4,13 @@
     ViewData["Title"] = "Login";
 
 }
+<div class="container">
 
 <h1>Login</h1>
 <hr />
+</div>
 <div class="row"> 
-    <div class="col-md-4">
+    <div class="col-md-4 container">
         <form asp-action="Login">
             <input type="hidden" name="ReturnUrl" value="@ViewData["RedirectUrl"]" /> 
             <div asp-validation-summary="All" class="text-danger"></div>

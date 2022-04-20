@@ -3,11 +3,13 @@
 @{
     ViewData["Title"] = "addCategory";
 }
-
+<div class="container">
 <h1>Add Category</h1>
 <hr />
+</div>
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 container">
         <form method="post" asp-action="save_addCategory"asp-controller="category">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
