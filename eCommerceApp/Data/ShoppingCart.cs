@@ -99,7 +99,15 @@ namespace eCommerceApp.Repos
             }
                     Context.SaveChanges();
         }
-
+        public void RemoveAllItemsFromCart(List<Product> products)
+        {
+            var items = GetShoppingCartItems();
+            foreach (var product in items)
+            {
+                Context.ShoppingCartItems.Remove(product);
+            }
+            Context.SaveChanges();
+        }
 
         #endregion
 

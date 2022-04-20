@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerceApp.Models;
 
 namespace eCommerceApp.Migrations
 {
     [DbContext(typeof(eCommerceAppEntities))]
-    partial class eCommerceAppEntitiesModelSnapshot : ModelSnapshot
+    [Migration("20220417231152_iv")]
+    partial class iv
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

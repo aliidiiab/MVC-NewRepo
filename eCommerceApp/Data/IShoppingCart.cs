@@ -12,5 +12,6 @@ namespace eCommerceApp.Repos
         List<ShoppingCartItem> GetShoppingCartItems();
         void RemoveItemFromCart(Product product);
         decimal ShoppingItemTotal();
+        void RemoveAllItemsFromCart(List<Product> products);
     }
 }

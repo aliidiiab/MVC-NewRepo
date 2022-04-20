@@ -46,5 +46,11 @@ namespace eCommerceApp.Repos
             int flag = context.SaveChanges();
             return flag;
         }
+        public int DeleteAll()
+        {
+            context.Products.RemoveRange(getallproducts());
+            int flag = context.SaveChanges();
+            return flag;
+        }
     }
 }
